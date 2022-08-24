@@ -1,0 +1,9 @@
+[
+  {
+    "name": "admin",
+    "username": "admin",
+    "password": "1111",
+    "email": "admin@gmail.com",
+    "blocked": false
+  }
+]

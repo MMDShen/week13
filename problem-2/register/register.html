@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css">
+    <script src="../bootstrap-5.2.0-beta1-dist/js/bootstrap.min.js"></script>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card px-5 py-5">
+
+                <span class="circle"><i class="fa fa-check"></i></span>
+
+                <h5 class="mt-3">Welcome to <span class="text-primary">BEST </span>messenger <span class="text-warning">Register Page</span><br>you
+                    can connect with
+                    every body</h5>
+
+                <ul class="my-2">
+                    <li><small>Instant messaging.</small></li>
+                    <li><small>Photo sharing.</small></li>
+                    <li><small>Group chats – users can chat with their Facebook friends and phone book contacts</small>
+                    </li>
+                </ul>
+
+                <form action="register.php" method="post">
+                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                    <!--                NAME -->
+                    <div class="form-input">
+                        <input id="name" type="text" name="name" class="text-light form-control" placeholder="Name">
+                    </div>
+
+                    <!--                EMAIL-->
+                    <div class="form-input">
+                        <input id="email" type="text" name="email" class="text-light form-control"
+                               placeholder="Email address">
+                    </div>
+
+                    <!--                USER NAME-->
+                    <div class="form-input">
+                        <input id="username" type="text" name="username" class="text-light form-control"
+                               placeholder="User name">
+                    </div>
+
+                    <!--                PASSWORD-->
+                    <div class="form-input">
+                        <input id="password" type="password" name="password" class="text-light form-control"
+                               placeholder="password">
+                    </div>
+
+                    <div class="form-check">
+                        <input id="agree" class="form-check-input" type="checkbox" name="agree" value="agree">
+                        <label class="form-check-label" for="agree">
+                            I agree all the statements
+                        </label>
+                    </div>
+
+                    <input disabled name="register" id="register" type="submit" value="Register Now"
+                           class="input-group btn btn-primary mt-4 signup">
+                </form>
+
+
+                <div class="text-center mt-4">
+                    <span>Already a member?</span>
+                    <a href="../login/login.php" class="text-decoration-none">Login</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /*
+    create for flags for check validate all
+     */
+    let nameIsOK = false;
+    let emailIsOK = false;
+    let usernameIsOK = false;
+    let passwordIsOK = false;
+
+    /*
+    get register button
+    if all field be ok register button change to enable
+    */
+    const register = $('#register');
+    const agree = $('#agree');
+    /* --!>  VALIDATION WITH JQUERY <!-- */
+
+
+    /* NAME VALIDATION */
+    const name = $('#name');
+    name.on('keyup', function () {
+        if (nameIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            nameIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            nameIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+    })
+    name.on('focus', function () {
+        if (nameIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            nameIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            nameIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+    })
+    /* EMAIL VALIDATION */
+    eamil = $('#email');
+    eamil.on('keyup', function () {
+        if (emailIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            emailIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            emailIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+    eamil.on('focus', function () {
+        if (emailIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            emailIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            emailIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+
+
+    /* USERNAME VALIDATION */
+    const username = $('#username');
+    username.on('keyup', function () {
+        if (usernameIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            usernameIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            usernameIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+    username.on('focus', function () {
+        if (usernameIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            usernameIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            usernameIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+
+    /* PASSWORD VALIDATION */
+    const password = $('#password');
+    password.on('keyup', function () {
+        if (passwordIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            passwordIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            passwordIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+    password.on('focus', function () {
+        if (passwordIsValid(this.value)) {
+            $(this).addClass('is-valid');
+            $(this).removeClass('is-invalid');
+            passwordIsOK = true;
+            if (canRegister()) {
+                register.removeAttr('disabled');
+            }
+
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid')
+            passwordIsOK = false;
+            register.attr('disabled', 'disabled');
+
+        }
+
+    })
+    agree.on('change', function () {
+        if (canRegister()) {
+            register.removeAttr('disabled');
+        } else {
+            register.attr('disabled', 'disabled');
+        }
+    })
+
+
+    function passwordIsValid(password) {
+        const pattern = /^[a-zA-Z0-9./<>?;:"'`!@#$%^&*()\[\]{}_+=|\\-]{4,32}$/;
+        return pattern.test(password);
+    }
+
+    function emailIsValid(email) {
+        const pattern = /^[\w-\.]+@((gmail|yahoo)+\.)+com$/;
+        return pattern.test(email);
+    }
+
+    function nameIsValid(name) {
+        const pattern = /^[A-z\s]{3,32}$/;
+        return pattern.test(name) && typeof name == 'string';
+
+    }
+
+    function usernameIsValid(username) {
+        const pattern = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{2,32}$/;
+        return pattern.test(username);
+    }
+
+    function canRegister() {
+        return nameIsOK && emailIsOK && passwordIsOK && usernameIsOK && agree.prop('checked');
+    }
+
+
+</script>
+</body>
+</html>
