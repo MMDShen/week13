@@ -1,7 +1,7 @@
 
 here we go ..
 # ERD
-
+![a picture](https://github.com/MMDShen/week13/blob/master/ERD-Problem-2/ERD.JPG)
 ```
 -- ----------------------------
 -- Table structure for chats
@@ -43,4 +43,4 @@ INSERT INTO `users` VALUES (9, 'adminweew', 'wewr@gmail.com', '1234', 'adere', 0
 SET FOREIGN_KEY_CHECKS = 1;
 
 ```
-![a picture](https://github.com/MMDShen/week13/blob/master/ERD-Problem-2/ERD.JPG)
+
